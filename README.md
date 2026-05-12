@@ -63,7 +63,7 @@ El uso de un **Join Node** final es incluso obligatorio ya que el mensaje de "Co
 ## 4. Justificación de los Nodos de Sincronización
 * **Fork Node:** Se justifica para mejorar el rendimiento interno que ocuure dentro del sistema. En entornos distribuidos con muchas acciones, lanzar tareas en paralelo reduce la latencia percibida por el cliente, esto siginfica que a la hora del usuario entrar dentro del sistema de confirmacón del pedido, tener varias acciones hace que el filtro se vuelve mas inteligente y ayude al sistema.
 * **Join Node:** Se utiliza como barrera de sincronización. Asegura que el flujo de control no progrese hasta que todos los procesos paralelos hayan retornado un token de éxito, token dentro de estas paginas de compra significa una llave de un solo uso, evitando así condiciones de datos incompletos en la confirmación final.
-* * **Activity Final Node:** A diferencia del Flow Final, este nodo se sitúa al final del camino tras el mensaje de "Mostrar Confirmación". Su activación indica que toda la instancia de la actividad "Procesamiento de Pedido" se ha completado satisfactoriamente y todos los tokens dentro del diagrama han sido consumidos.
+* **Activity Final Node:** A diferencia del Flow Final, este nodo se sitúa al final del camino tras el mensaje de "Mostrar Confirmación". Su activación indica que toda la instancia de la actividad "Procesamiento de Pedido" se ha completado satisfactoriamente y todos los tokens dentro del diagrama han sido consumidos.
 
 ## 5. Bibliografía (Formato IEEE)
 
