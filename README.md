@@ -24,7 +24,7 @@ Este proyecto lo presentamos en el modelado técnico del proceso que hay detras 
 ## 2. Diagrama de Actividad (Fase 2)
 El siguiente diagrama detalla el flujo de control, desde que el usuario finaliza la compra hasta la confirmación final, destacando los puntos de bifurcación y sincronización, lo hemos hecho a través de una extension draw.io integration lo cual nostros lo hemos exportado mediante un png todo se integra autoamticamente.
 
-/////////////// FOTO DIAGRAMA 
+![Diagrama_Confirmacion_Pedido](img/Diagrama_Confirmacion_Pedido.png)
 
 ## 3. Explicación Técnica del Proceso
 El flujo de trabajo ha sido diseñado bajo una lógica de negocio robusta que se divide en tres etapas principales loe hemos elbaorado tal como el suuario entraria y haria toda la gestion desde el que el usuario pulsa el boton hasta el mensaje de confirmación de tal forma que estamos en 1:1 con el usuario.
