@@ -9,10 +9,12 @@
 ---
 
 ## Índice
-1. [Introducción y Contexto](#1-contexto-y-empresa-auditada)
-2. [Diagrama de Actividad (Fase 2)](#2-diagrama-de--actividad-(fase 2)
-
-
+1. [Introducción y Contexto](#1-introducción-y-contexto)
+2. [Diagrama de Actividad (Fase 2)](#2-diagrama-de-actividad-fase-2)
+3. [Explicación Técnica del Proceso](#3-explicación-técnica-del-proceso)
+4. [Justificación de los Nodos de Sincronización](#4-justificación-de-los-nodos-de-sincronización)
+5. [Bibliografía (Formato IEEE)](#5-bibliografía-formato-ieee)
+   
 ---
 ## 1. Introducción y Contexto
 Este proyecto lo presentamos en el modelado técnico del proceso que hay detras de una Confirmación de Pedido para una plataforma de E-commerce. Siguiendo los pasos que lleva la industria y el **UML 2.5**, el diseño se enfoca en la optimización de procesos mediante la ejecución concurrente de tareas osea el tema de facturación, ventas, pedidos, tramitaciones.. permitiendo una aplicación más eficiente y una mejor experiencia de usuario al evitar esperas innecesarias en tareas de segundo plano ya que si hacemos esperar un minuto mas al usuario no comprara nuestro producto y seria dinero perdido lo cual no nos intresa perder ventas y sobretodo a usuarios.
