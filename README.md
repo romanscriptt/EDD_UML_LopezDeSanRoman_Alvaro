@@ -1,11 +1,10 @@
 # Sistema de Gestión de Pedidos - Modelado de Comportamiento UML 2.5
+
 **Módulo:** Entornos de Desarrollo · DAM Superior  
-
-**Autores:** Álvaro López de San Román · Santiago González González
-
+**Autores:** Álvaro López de San Román | Santiago González González
 **Centro:** FP Superior - Cámara De Comercio De Sevilla
-
 **Trimestre:** 3º Trimestre
+
 ---
 
 ## Índice
@@ -75,5 +74,5 @@ Para la elaboración de esta actividad y la correcta implementación de la sinta
 
 ---
 
-**Desarrollado por:** Álvaro y Santiago
+**Desarrollado por:** Álvaro López | Santiago González
 **Asignatura:** Entornos de Desarrollo
