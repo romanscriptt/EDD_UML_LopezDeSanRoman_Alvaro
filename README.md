@@ -8,7 +8,7 @@
 **Trimestre:** 3º Trimestre
 ---
 
-##Índice
+## Índice
 1. [Introducción y Contexto](#1-contexto-y-empresa-auditada)
 2. [Diagrama de Actividad (Fase 2)](#2-diagrama-de--actividad-(fase 2)
 
@@ -25,3 +25,8 @@ El siguiente diagrama detalla el flujo de control, desde que el usuario finaliza
 ## 3. Explicación Técnica del Proceso
 El flujo de trabajo ha sido diseñado bajo una lógica de negocio robusta que se divide en tres etapas principales loe hemos elbaorado tal como el suuario entraria y haria toda la gestion desde el que el usuario pulsa el boton hasta el mensaje de confirmación de tal forma que estamos en 1:1 con el usuario.
 
+### A. Validación Concurrente Inicial
+Al pulsar "Finalizar compra" como aparece en varias plataforma de ecom, el sistema no actúa de forma lineal que sginifica esto dentro del diagrama. Se utiliza la herramienta **Fork Node** para verificar simultáneamente dos cosas a la vez:
+* **Stock de productos:** Consulta al motor de inventario que hay dentro del almacen del invenatrio de la empresa haciendo recuentos simultaneos.
+* **Validez de la Sesión:** Comprobación de seguridad del usuario.
+Ambos hilos se sincronizan en un **Join Node** antes de proceder al pago, garantizando la integridad de la transacción de la compra de dicho producto.
