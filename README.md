@@ -35,3 +35,11 @@ Ambos hilos se sincronizan en un **Join Node** antes de proceder al pago, garant
 Se han implementado **Decision Nodes** en si lo que son los rombos dentro del digrama loq ue hace esta función es para gestionar los flujos de error:
 * Si el stock o la sesión fallan, el flujo se desvía a un **Flow Final Node** (marcado con una X), terminando esa rama sin afectar el resto del sistema si hubiera otros procesos activos.
 * El pago cuenta con su propio nodo de decisión para validar el éxito de la pasarela segura.
+
+### C. Post-Pago Concurrencia Crítica
+Una vez el pago es marcado como exitoso depues de haber pasado todos los filtros que hay dentro desl sistema, el propio sistema entra en una fase de **concurrencia crítica** esto seria la fase ultima y final para cual todo seri apara la tramitación del pedido. Se utiliza un segundo **Fork Node** para disparar tres acciones que no dependen entre sí, para que el usuario tengo por completo toda la facturación del prodcuto a la hora de que sea seguro y comodo ,para tener esa empatía que es buena al usuario ,para que se siuenta com odo pagando y lo vea de forma segura:
+1. **Registro en Base de Datos:** Persistencia del pedido.
+2. **Generación de Factura:** Creación del archivo PDF legal.
+3. **Notificación:** Envío del correo electrónico de confirmación.
+
+El uso de un **Join Node** final es incluso obligatorio ya que el mensaje de "Confirmación" que aparece no es solo lo que se le muestra al cliente cuando el sistema garantiza que la factura ha sido generada sino tambien pedido está registrado correctamente dentro del sector ecom.
