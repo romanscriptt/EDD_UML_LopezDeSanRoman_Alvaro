@@ -25,11 +25,23 @@ El siguiente diagrama detalla el flujo de control, desde que el usuario finaliza
 ## 3. Explicación Técnica del Proceso
 El flujo de trabajo ha sido diseñado bajo una lógica de negocio robusta que se divide en tres etapas principales loe hemos elbaorado tal como el suuario entraria y haria toda la gestion desde el que el usuario pulsa el boton hasta el mensaje de confirmación de tal forma que estamos en 1:1 con el usuario.
 
-### A. Validación Concurrente Inicial
-Al pulsar "Finalizar compra" como aparece en varias plataforma de ecom, el sistema no actúa de forma lineal que sginifica esto dentro del diagrama. Se utiliza la herramienta **Fork Node** para verificar simultáneamente dos cosas a la vez:
-* **Stock de productos:** Consulta al motor de inventario que hay dentro del almacen del invenatrio de la empresa haciendo recuentos simultaneos.
-* **Validez de la Sesión:** Comprobación de seguridad del usuario.
-Ambos hilos se sincronizan en un **Join Node** antes de proceder al pago, garantizando la integridad de la transacción de la compra de dicho producto.
+### A. Validación Concurrente Inicial y Subactividad de Stock
+
+En el desarrollo de plataformas e-commerce en este nicho esta muy explotado ultimamente, el sistema no debe actuar de forma estrictamente lineal lo que significa dentro del sistema que cada tarea espera a la anterior y tendriamos mucho teiempo de espera. En este modelo, la no linealidad se implementa mediante un **Fork Node**, lo que permite que el sistema dispare dos hilos de ejecución paralelos en el momento en que el usuario pulsa "Finalizar compra":
+
+* **Validez de la Sesión:** Se realiza una comprobación de seguridad y tokens del usuario de forma asíncrona.
+* **Subactividad: Verificar Stock:** Debido a la complejidad técnica que implica consultar múltiples almacenes físicos y realizar recuentos simultáneos, esta acción se ha modelado como una **subactividad**, lo hemos identifcado con el simbolo del rastrillo.
+
+#### Lógica de la Subactividad "Verificar Stock":
+Esta subactividad encapsula una lógica interna de búsqueda distribuida. 
+* **Si el stock es insuficiente:** Se activa un **Flow Final Node** el cual lo podemos mirar como un circulo con uan X dentro, esto permite finalizar esta línea de actividad específica osea la validación de stock sin detener otros procesos del sistema que podrían estar en ejecución, enviando una señal de "Verificación fallida" al nodo de decisión.
+* **Si el stock es correcto:** El flujo continúa hacia la sincronización.
+
+#### Sincronización e Integridad:
+Ambos hilos los de Sesión y Stock, deben ir obligatoriamente en un **Join Node** antes de proceder al pago. Esa barrera de sincronización garantiza la integridad de la transacción: el sistema prohíbe el acceso a la pasarela de pago segura si alguna de las dos validaciones paralelas no ha retornado un token de éxito.
+
+#### Terminación del proceso
+Cuando algunas de las dos verficaciones son fallidas se crea una subactividad, donde se termian el proceso manndando un mensaje de error
 
 ### B. Gestión de Decisiones
 Se han implementado **Decision Nodes** en si lo que son los rombos dentro del digrama loq ue hace esta función es para gestionar los flujos de error:
@@ -47,6 +59,7 @@ El uso de un **Join Node** final es incluso obligatorio ya que el mensaje de "Co
 ## 4. Justificación de los Nodos de Sincronización
 * **Fork Node:** Se justifica para mejorar el rendimiento interno que ocuure dentro del sistema. En entornos distribuidos con muchas acciones, lanzar tareas en paralelo reduce la latencia percibida por el cliente, esto siginfica que a la hora del usuario entrar dentro del sistema de confirmacón del pedido, tener varias acciones hace que el filtro se vuelve mas inteligente y ayude al sistema.
 * **Join Node:** Se utiliza como barrera de sincronización. Asegura que el flujo de control no progrese hasta que todos los procesos paralelos hayan retornado un token de éxito, token dentro de estas paginas de compra significa una llave de un solo uso, evitando así condiciones de datos incompletos en la confirmación final.
+* * **Activity Final Node:** A diferencia del Flow Final, este nodo se sitúa al final del camino tras el mensaje de "Mostrar Confirmación". Su activación indica que toda la instancia de la actividad "Procesamiento de Pedido" se ha completado satisfactoriamente y todos los tokens dentro del diagrama han sido consumidos.
 
 ## 5. Bibliografía (Formato IEEE)
 
