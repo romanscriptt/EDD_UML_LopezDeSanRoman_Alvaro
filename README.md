@@ -30,3 +30,8 @@ Al pulsar "Finalizar compra" como aparece en varias plataforma de ecom, el siste
 * **Stock de productos:** Consulta al motor de inventario que hay dentro del almacen del invenatrio de la empresa haciendo recuentos simultaneos.
 * **Validez de la Sesión:** Comprobación de seguridad del usuario.
 Ambos hilos se sincronizan en un **Join Node** antes de proceder al pago, garantizando la integridad de la transacción de la compra de dicho producto.
+
+### B. Gestión de Decisiones
+Se han implementado **Decision Nodes** en si lo que son los rombos dentro del digrama loq ue hace esta función es para gestionar los flujos de error:
+* Si el stock o la sesión fallan, el flujo se desvía a un **Flow Final Node** (marcado con una X), terminando esa rama sin afectar el resto del sistema si hubiera otros procesos activos.
+* El pago cuenta con su propio nodo de decisión para validar el éxito de la pasarela segura.
