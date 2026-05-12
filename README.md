@@ -43,3 +43,22 @@ Una vez el pago es marcado como exitoso depues de haber pasado todos los filtros
 3. **Notificación:** Envío del correo electrónico de confirmación.
 
 El uso de un **Join Node** final es incluso obligatorio ya que el mensaje de "Confirmación" que aparece no es solo lo que se le muestra al cliente cuando el sistema garantiza que la factura ha sido generada sino tambien pedido está registrado correctamente dentro del sector ecom.
+
+## 4. Justificación de los Nodos de Sincronización
+* **Fork Node:** Se justifica para mejorar el rendimiento interno que ocuure dentro del sistema. En entornos distribuidos con muchas acciones, lanzar tareas en paralelo reduce la latencia percibida por el cliente, esto siginfica que a la hora del usuario entrar dentro del sistema de confirmacón del pedido, tener varias acciones hace que el filtro se vuelve mas inteligente y ayude al sistema.
+* **Join Node:** Se utiliza como barrera de sincronización. Asegura que el flujo de control no progrese hasta que todos los procesos paralelos hayan retornado un token de éxito, token dentro de estas paginas de compra significa una llave de un solo uso, evitando así condiciones de datos incompletos en la confirmación final.
+
+## 5. Bibliografía (Formato IEEE)
+
+Para la elaboración de esta actividad y la correcta implementación de la sintaxis UML 2.5, se han consultado las siguientes fuentes:
+
+* **[1] Object Management Group (OMG)**, “Unified Modeling Language (UML) Specification Version 2.5.1 - Section 15.3: Control Nodes,” Mar. 2021. [En línea]. Disponible en: [https://www.omg.org/spec/UML/2.5.1/Formal-Specification](https://www.omg.org/spec/UML/2.5.1/Formal-Specification) (Consultar específicamente la semántica de *ForkNode* y *JoinNode* en la sección de especificación formal).
+
+* **[2] IBM Documentation**, “UML activity diagrams: Synchronization bars and control nodes,” Rational Rhapsody, 2021. [En línea]. Disponible en: [https://www.ibm.com/docs/en/rhapsody/9.0.1?topic=diagrams-uml-activity#control-nodes](https://www.ibm.com/docs/en/rhapsody/9.0.1?topic=diagrams-uml-activity#control-nodes) (Documentación técnica sobre la división y unión de flujos concurrentes).
+
+* **[3] Visual Paradigm**, “UML Activity Diagram Notation Guide: Fork and Join Nodes,” 2024. [En línea]. Disponible en: [https://www.visual-paradigm.com/guide/uml/what-is-activity-diagram/#activity-diagram-notation-guide](https://www.visual-paradigm.com/guide/uml/what-is-activity-diagram/#activity-diagram-notation-guide) (Guía de notación visual para la implementación de barras de sincronización).
+
+---
+
+**Desarrollado por:** Álvaro y Santiago
+**Asignatura:** Entornos de Desarrollo
