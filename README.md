@@ -78,4 +78,5 @@ Para la elaboración de esta actividad y la correcta implementación de la sinta
 ---
 
 **Desarrollado por:** Álvaro López | Santiago González
+
 **Asignatura:** Entornos de Desarrollo
