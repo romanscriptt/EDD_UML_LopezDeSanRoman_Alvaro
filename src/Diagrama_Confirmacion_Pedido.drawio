@@ -153,6 +153,9 @@
                         <mxPoint x="590" y="448.74" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
+                <mxCell id="52" style="edgeStyle=none;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="47" target="51">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
                 <mxCell id="47" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=strokeColor;" vertex="1" parent="1">
                     <mxGeometry x="590" y="390" width="5" height="115" as="geometry"/>
                 </mxCell>
@@ -170,6 +173,15 @@
                         <mxPoint x="560" y="509.75" as="sourcePoint"/>
                         <mxPoint x="590" y="493.7049999999999" as="targetPoint"/>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="54" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="51" target="53">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="51" value="Mostrar&lt;div&gt;Confirmación&lt;/div&gt;" style="html=1;align=center;verticalAlign=top;rounded=1;absoluteArcSize=1;arcSize=10;dashed=0;whiteSpace=wrap;" vertex="1" parent="1">
+                    <mxGeometry x="690" y="430" width="140" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="53" value="" style="ellipse;html=1;shape=endState;fillColor=strokeColor;" vertex="1" parent="1">
+                    <mxGeometry x="900" y="435" width="30" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
